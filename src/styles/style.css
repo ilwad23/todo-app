@@ -20,7 +20,8 @@
   --bg-img-mobile: url(../images/bg-mobile-light.jpg);
   --box: #fafafa;
   --circle: #d2d3db;
-  --tool-top: #9091a2;
+  --tool: #9091a2;
+  --tool-hover:  #505058;
   --filter: #9091a2;
   --typing: #484b6a;
   --completed-message: #e4e5f1;
@@ -33,7 +34,8 @@
   --bg-img-mobile: url(../images/bg-mobile-dark.jpg);
   --box: #24263d;
   --circle: #393a4c;
-  --tool-top: #4d4f66;
+  --tool: #4d4f66;
+  --tool-hover:  #D2D3DB;
   --filter: #777a92;
   --typing: #d8daee;
   --completed-message: #4d4f66;
@@ -226,10 +228,47 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  font-weight: 300;
+  color: var(--tool);
+  font-size: 13px;
+  line-height: 13px;
   padding: 20px;
 }
 
-.container .wrapper .list .tool > * {
-  color: red;
+.container .wrapper .list .tool > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container .wrapper .list .tool .items-left:hover {
+  color: var(--tool-hover);
+}
+
+.container .wrapper .list .tool .items-left > span {
+  margin-right: 5px;
+}
+
+.container .wrapper .list .tool .filter p {
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.container .wrapper .list .tool .filter p.option {
+  color: #3a7bfd;
+}
+
+.container .wrapper .list .tool .filter p:hover {
+  color: var(--tool-hover);
+}
+
+.container .wrapper .list .tool .clear:hover {
+  color: var(--tool-hover);
 }
 /*# sourceMappingURL=style.css.map */

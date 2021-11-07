@@ -50,7 +50,7 @@
         &.completed {
           @include completed-circle();
         }
-        
+
         &:hover {
           @include completed-circle();
           border: none;
@@ -68,14 +68,40 @@
           @include font(600, var(--completed-message), 17px);
         }
       }
-      
     }
     .tool {
       @include box($height);
       @include seperate-items-between();
+      @include font(300, var(--tool), 13px);
       padding: 20px;
-      & > * {
-        color: red;
+      
+      & > div {
+        @include seperate-items-between();
+      }
+      .items-left {
+        &:hover {
+          color: var(--tool-hover);
+        }
+        & > span {
+          margin-right: 5px;
+        }
+      }
+      .filter {
+        & p {
+         font-weight: 700;
+          margin-right: 10px;
+          &.option {
+            color: $blue;
+          }
+        }
+        & p:hover {
+          color: var(--tool-hover);
+        }
+      }
+      .clear {
+        &:hover {
+          color: var(--tool-hover);
+        }
       }
     }
   }

@@ -51,7 +51,7 @@ function App() {
               <p>items left</p>
             </div>
             <div class="filter">
-              <p>All</p>
+              <p className='option'>All</p>
               <p>Active</p>
               <p>completed</p>
             </div>

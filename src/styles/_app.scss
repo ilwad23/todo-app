@@ -1,0 +1,82 @@
+.wrapper {
+  @include center-item();
+  padding-top: 178px;
+
+  .header {
+    width: $width;
+    height: 75px;
+    @include seperate-items-between();
+    .logo {
+      @include font(bold, white, 43px);
+      letter-spacing: 0.29em;
+    }
+  }
+
+  .input {
+    @include box($height);
+    @include seperate-items-start();
+    box-shadow: $shadows;
+    margin-bottom: 30px;
+    & .circle {
+      @include uncompleted-circle();
+    }
+    & input {
+      @include font(600, var(--filter), 17px);
+      background-color: transparent;
+      border: none;
+      outline: none;
+      &:focus {
+        color: var(--typing);
+      }
+    }
+    ::placeholder {
+      color: var(--filter);
+    }
+  }
+
+  .list {
+    @include box(fix-content);
+    box-shadow: $shadows;
+    z-index: 1;
+    .todo {
+      @include box($height);
+      @include seperate-items-start();
+      border-bottom: 1px solid var(--circle);
+      .circle {
+        position: relative;
+        &.uncompleted {
+          @include uncompleted-circle();
+        }
+        &.completed {
+          @include completed-circle();
+        }
+        
+        &:hover {
+          @include completed-circle();
+          border: none;
+          &::before {
+            @include uncompleted-circle-before();
+          }
+        }
+      }
+      .text {
+        &.uncompleted {
+          @include font(600, var(--uncompleted-message), 17px);
+        }
+        &.completed {
+          text-decoration: line-through;
+          @include font(600, var(--completed-message), 17px);
+        }
+      }
+      
+    }
+    .tool {
+      @include box($height);
+      @include seperate-items-between();
+      padding: 20px;
+      & > * {
+        color: red;
+      }
+    }
+  }
+}

@@ -1,33 +1,42 @@
 import React from "react";
 
-function Tool({ todos,setTodos, setOption, option }) {
+function Tool({ todos, setTodos, setOption, option }) {
   return (
     <div className="tool">
-      <div className="items-left top">
-        <span className="num">{todos.filter((v) => !v.completed).length}</span>
+      <div className="tool__completedTodos">
+        <div className="tool__completedTodos--num">
+          {todos.filter((v) => !v.completed).length}
+        </div>
         <p>items left</p>
       </div>
-      <div className="filter">
-        <p
-          className={option == "all" && "option"}
-          onClick={() => setOption("all")}
-        >
-          All
-        </p>
-        <p
-          className={option == "active" && "option"}
-          onClick={() => setOption("active")}
-        >
-          Active
-        </p>
-        <p
-          className={option == "completed" && "option"}
-          onClick={() => setOption("completed")}
-        >
-          completed
-        </p>
+      <div className="tool__filterWrapper">
+        <div className="tool__filter">
+          <p
+            className={option == "all" && "tool__filter--option"}
+            onClick={() => setOption("all")}
+          >
+            All
+          </p>
+          <p
+            className={option == "active" && "tool__filter--option"}
+            onClick={() => setOption("active")}
+          >
+            Active
+          </p>
+          <p
+            className={option == "completed" && "tool__filter--option"}
+            onClick={() => setOption("completed")}
+          >
+            completed
+          </p>
+        </div>
       </div>
-      <p className="clear top" onClick={() => setTodos([])}>
+      <p
+        className="clear top"
+        onClick={() =>
+          setTodos((prevTodos) => prevTodos.filter((obj) => !obj.completed))
+        }
+      >
         Clear Completed
       </p>
     </div>

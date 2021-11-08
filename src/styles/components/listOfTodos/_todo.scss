@@ -1,0 +1,46 @@
+.todo {
+  @include box($height);
+  @include seperate-items-between();
+  border-bottom: 1px solid var(--circle);
+  cursor: pointer;
+
+  &__left {
+    @include seperate-items-start();
+  }
+  &__circle {
+    position: relative;
+    @include circle();
+    &--uncompleted {
+      border: $circle-border;
+    }
+    &--completed {
+      background: $gradint;
+    }
+  }
+
+  &__text {
+    @include font(600, var(--uncompleted-message), 17px);
+    &--completed {
+      text-decoration: line-through;
+      color: var(--completed-message);
+    }
+  }
+  &__cross {
+    margin-right: 20px;
+    display: none;
+  }
+  &:hover {
+    .todo__cross {
+      display: block;
+    }
+    .todo__circle {
+      &--uncompleted {
+        border: none;
+        background: $gradint;
+      }
+      &::before {
+        @include circle-before();
+      }
+    }
+  }
+}

@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import IconCross from '../images/icon-cross.svg'
-function Todo({  setTodos,todo }) {
+import IconCross from "../images/icon-cross.svg";
+function Todo({ setTodos, todo }) {
   const [completed, setCompleted] = useState(false);
 
+  function cancelTodo()  {
+    setTodos((prevTodos) => {
+      let newTodos = prevTodos.filter((obj, i) => obj.message!==todo.message);
+      return newTodos;
+    });
+  }
   function handleTodos() {
     setTodos((prevTodos) => {
       let newTodos = prevTodos.map((obj, i) => {
@@ -18,18 +24,24 @@ function Todo({  setTodos,todo }) {
   }
   return (
     <div className="todo" onClick={() => handleTodos()}>
-     <div className='left'>
-
-      <div
-        className={`circle ${todo.completed ? "completed" : "uncompleted"}`}
+      <div className="todo__left">
+        <div
+          className={`todo__circle ${
+            todo.completed
+              ? "todo__circle--completed"
+              : "todo__circle--uncompleted"
+          }`}
         ></div>
-      <div className={`text ${todo.completed ? "completed" : "uncompleted"}`}>
-        {todo.message}
-      </div>
-
-    </div>
-    <img className='cross' src={IconCross} onClick={()=>console.log('clicked')}/>
+        <div
+          className={`todo__text ${
+            todo.completed ? "todo__text--completed" : "todo__text--uncompleted"
+          }`}
+        >
+          {todo.message}
         </div>
+      </div>
+      <img className="todo__cross" src={IconCross} onClick={() => cancelTodo()} />
+    </div>
   );
 }
 

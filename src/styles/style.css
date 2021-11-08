@@ -14,7 +14,7 @@
   background-color: var(--bg);
 }
 
-.container.light {
+.container__light {
   --bg: #fafafa;
   --bg-img-desktop: url(../images/bg-desktop-light.jpg);
   --bg-img-mobile: url(../images/bg-mobile-light.jpg);
@@ -28,7 +28,7 @@
   --uncompleted-message: #484b6a;
 }
 
-.container.dark {
+.container__dark {
   --bg: #161722;
   --bg-img-desktop: url(../images/bg-desktop-dark.jpg);
   --bg-img-mobile: url(../images/bg-mobile-dark.jpg);
@@ -42,7 +42,7 @@
   --uncompleted-message: #d8daee;
 }
 
-.container .wrapper {
+.container__within {
   display: -ms-grid;
   display: grid;
   place-items: center;
@@ -129,7 +129,7 @@
   color: var(--filter);
 }
 
-.list {
+.listOfTodos {
   width: 540px;
   height: fix-content;
   background-color: var(--box);
@@ -157,7 +157,7 @@
   cursor: pointer;
 }
 
-.todo .left {
+.todo__left {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -169,7 +169,7 @@
           justify-content: flex-start;
 }
 
-.todo .left .circle {
+.todo__circle {
   position: relative;
   width: 28px;
   height: 26px;
@@ -178,41 +178,41 @@
   margin-right: 20px;
 }
 
-.todo .left .circle.uncompleted {
+.todo__circle--uncompleted {
   border: 2px solid var(--circle);
 }
 
-.todo .left .circle.completed {
+.todo__circle--completed {
   background: linear-gradient(139.05deg, #57ddff 0%, #c058f3 112.99%);
 }
 
-.todo .left .text {
+.todo__text {
   font-weight: 600;
   color: var(--uncompleted-message);
   font-size: 17px;
   line-height: 17px;
 }
 
-.todo .left .text.completed {
+.todo__text--completed {
   text-decoration: line-through;
   color: var(--completed-message);
 }
 
-.todo img {
+.todo__cross {
   margin-right: 20px;
   display: none;
 }
 
-.todo:hover .cross {
+.todo:hover .todo__cross {
   display: block;
 }
 
-.todo:hover .circle.uncompleted {
+.todo:hover .todo__circle--uncompleted {
   border: none;
   background: linear-gradient(139.05deg, #57ddff 0%, #c058f3 112.99%);
 }
 
-.todo:hover .circle::before {
+.todo:hover .todo__circle::before {
   content: "";
   width: 23px;
   height: 22px;
@@ -241,10 +241,11 @@
   color: var(--tool);
   font-size: 13px;
   line-height: 13px;
+  position: relative;
   padding: 20px;
 }
 
-.tool > div {
+.tool__completedTodos, .tool__filter {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -256,31 +257,56 @@
           justify-content: space-between;
 }
 
-.tool .items-left,
-.tool .clear {
+.tool__completedTodos, .tool__clear {
   cursor: pointer;
 }
 
-.tool .items-left:hover,
-.tool .clear:hover {
-  color: var(--tool-hover);
-}
-
-.tool .num {
+.tool__completedTodos--num, .tool__clear--num {
   margin-right: 5px;
 }
 
-.tool .filter p {
+.tool__completedTodos:hover, .tool__clear:hover {
+  color: var(--tool-hover);
+}
+
+.tool__filterWrapper {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.tool__filter p {
   cursor: pointer;
   font-weight: 700;
   margin-right: 10px;
 }
 
-.tool .filter p.option {
+.tool__filter--option {
   color: #3a7bfd;
 }
 
-.tool .filter p:hover {
+.tool__filter p:hover {
   color: var(--tool-hover);
+}
+
+@media screen and (max-width: 550px) {
+  .tool__filterWrapper {
+    position: absolute;
+    top: 84px;
+    left: 0;
+    width: 540px;
+    height: 64px;
+    background-color: var(--box);
+    border-radius: 4px;
+    display: -ms-grid;
+    display: grid;
+    place-items: center;
+  }
+  .tool__filter {
+    background-color: crimson;
+  }
+  .tool__filter p {
+    margin-right: 15px;
+  }
 }
 /*# sourceMappingURL=style.css.map */

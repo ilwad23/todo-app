@@ -13,6 +13,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [option, setOption] = useState("all");
   const themeIcon = theme ? sun : moon;
+
   function handleSubmit(e) {
     if (value) {
       if (e.key == "Enter") {
@@ -22,6 +23,7 @@ function App() {
       }
     }
   }
+
   let filteredTodos = todos.filter((todo) => {
     if (option == "completed") {
       if (todo.completed) {
@@ -35,21 +37,23 @@ function App() {
       return todo;
     }
   });
+
   let Todos = filteredTodos.map((todo, i) => (
     <Todo key={i} todo={todo} setTodos={setTodos} />
   ));
+
   return (
     <div
-      className={`container ${theme ? "dark" : "light"}`}
+      className={`container ${theme ? "container__dark" : "container__light"}`}
       data-theme={theme ? "dark" : "light"}
     >
-      <div className="wrapper">
+      <div className="container__within">
         <Header theme={theme} setTheme={setTheme} themeIcon={themeIcon} />
 
         <Input handleSubmit={handleSubmit} setValue={setValue} value={value} />
 
         {todos.length > 0 && (
-          <div className="list">
+          <div className="listOfTodos">
             {Todos}
             <Tool
               todos={todos}

@@ -5,7 +5,7 @@
 }
 
 .container {
-  &.light {
+  &__light {
     --bg: #fafafa;
     --bg-img-desktop: url(../images/bg-desktop-light.jpg);
     --bg-img-mobile: url(../images/bg-mobile-light.jpg);
@@ -18,7 +18,7 @@
     --completed-message: #e4e5f1;
     --uncompleted-message: #484b6a;
   }
-  &.dark {
+  &__dark {
     --bg: #161722;
     --bg-img-desktop: url(../images/bg-desktop-dark.jpg);
     --bg-img-mobile: url(../images/bg-mobile-dark.jpg);
@@ -37,7 +37,7 @@
   height: $height-page;
   background: var(--bg-img-desktop) no-repeat;
   background-color: var(--bg);
-  .wrapper {
+  &__within {
   @include center-item();
   padding-top: 178px;
   }

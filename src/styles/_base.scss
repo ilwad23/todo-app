@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  &.light {
+    --bg: #fafafa;
+    --bg-img-desktop: url(../images/bg-desktop-light.jpg);
+    --bg-img-mobile: url(../images/bg-mobile-light.jpg);
+    --box: #fafafa;
+    --circle: #d2d3db;
+    --tool: #9091a2;
+    --tool-hover:  #505058;
+    --filter: #9091a2;
+    --typing: #484b6a;
+    --completed-message: #e4e5f1;
+    --uncompleted-message: #484b6a;
+  }
+  &.dark {
+    --bg: #161722;
+    --bg-img-desktop: url(../images/bg-desktop-dark.jpg);
+    --bg-img-mobile: url(../images/bg-mobile-dark.jpg);
+    --box: #24263d;
+    --circle: #393a4c;
+    --tool: #4d4f66;
+    --tool-hover:  #D2D3DB;
+    --filter: #777a92;
+    --typing: #d8daee;
+    --completed-message: #4d4f66;
+    --uncompleted-message: #d8daee;
+  }
+  font-family: "Josefin Sans", sans-serif;
+  font-style: normal;
+  width: $width-page;
+  height: $height-page;
+  background: var(--bg-img-desktop) no-repeat;
+  background-color: var(--bg);
+  .wrapper {
+  @include center-item();
+  padding-top: 178px;
+  }
+}

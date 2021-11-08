@@ -1,0 +1,42 @@
+.list {
+  @include box(fix-content);
+  box-shadow: $shadows;
+  z-index: 1;
+}
+@import "./todo";
+
+.tool {
+  @include box($height);
+  @include seperate-items-between();
+  @include font(300, var(--tool), 13px);
+  padding: 20px;
+
+  & > div {
+    @include seperate-items-between();
+  }
+  .items-left,
+  .clear {
+    cursor: pointer;
+  }
+
+  .items-left:hover,
+  .clear:hover {
+    color: var(--tool-hover);
+  }
+  .num {
+    margin-right: 5px;
+  }
+  .filter p {
+    &  {
+      cursor: pointer;
+      font-weight: 700;
+      margin-right: 10px;
+      &.option {
+        color: $blue;
+      }
+    }
+    &:hover {
+      color: var(--tool-hover);
+    }
+  }
+}

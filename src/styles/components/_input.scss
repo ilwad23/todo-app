@@ -1,0 +1,22 @@
+.input {
+  @include box($height);
+  @include seperate-items-start();
+  box-shadow: $shadows;
+  margin-bottom: 30px;
+  &__circle {
+    @include circle();
+    border: $circle-border;
+  }
+  &__field {
+    @include font(600, var(--filter), 17px);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    &:focus {
+      color: var(--typing);
+    }
+  }
+  ::placeholder {
+    color: var(--filter);
+  }
+}

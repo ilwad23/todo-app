@@ -1,0 +1,9 @@
+.header {
+  width: $width;
+  height: 75px;
+  @include seperate-items-between();
+  &__logo {
+    @include font(bold, white, 43px);
+    letter-spacing: 0.29em;
+  }
+}

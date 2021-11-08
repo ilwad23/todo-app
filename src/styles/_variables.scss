@@ -4,6 +4,7 @@ $gradint: linear-gradient(
   hsl(192, 100%, 67%) 0%,
   hsl(280, 87%, 65%) 112.99%
 );
+$shadows: 0px 25px 26px 5px rgba(0, 0, 0, 0.1);
 
 // SIZES
 $width: 540px;
@@ -11,8 +12,7 @@ $height: 64px;
 $width-page: 100vw;
 $height-page: 100vh;
 
-// SHADOWS
-$shadows: 0px 25px 26px 5px rgba(0, 0, 0, 0.1);
+
 // GERNERAL MIXINS
 @mixin center-item {
   display: grid;
@@ -46,23 +46,15 @@ $shadows: 0px 25px 26px 5px rgba(0, 0, 0, 0.1);
   background-color: var(--box);
   border-radius: 4px;
 }
-@mixin uncompleted-circle() {
+@mixin circle() {
   width: 28px;
   height: 26px;
   margin-left: 22px;
   border-radius: 100%;
   margin-right: 20px;
-  border: 2px solid var(--circle);
 }
-@mixin completed-circle() {
-  width: 28px;
-  height: 26px;
-  margin-left: 22px;
-  border-radius: 100%;
-  margin-right: 20px;
-  background: $gradint;
-}
-@mixin uncompleted-circle-before() {
+  // background: $gradint;
+@mixin circle-before() {
   content: "";
   width: 23px;
   height: 22px;

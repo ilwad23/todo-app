@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import "../styles/style.css";
-import sun from "../images/icon-sun.svg";
-import moon from "../images/icon-moon.svg";
+import { useStateValue } from "../States/StateProvider";
 import Todo from "./Todo";
 import Tool from "./Tool";
 import Input from "./Input";
 import Header from "./Header";
 
 function App() {
-  const [theme, setTheme] = useState(true);
   const [value, setValue] = useState("");
   const [todos, setTodos] = useState([]);
   const [option, setOption] = useState("all");
-  const themeIcon = theme ? sun : moon;
-
+  const [state, dispatch] = useStateValue();
   function handleSubmit(e) {
     if (value) {
       if (e.key == "Enter") {
@@ -44,11 +41,12 @@ function App() {
 
   return (
     <div
-      className={`container ${theme ? "container__dark" : "container__light"}`}
-      data-theme={theme ? "dark" : "light"}
+      className={`container ${
+        state.theme ? "container__dark" : "container__light"
+      }`}
     >
       <div className="container__within">
-        <Header theme={theme} setTheme={setTheme} themeIcon={themeIcon} />
+        <Header />
 
         <Input handleSubmit={handleSubmit} setValue={setValue} value={value} />
 

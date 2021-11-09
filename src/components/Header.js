@@ -1,12 +1,15 @@
 import React from 'react'
 
-function Header({ theme, setTheme, themeIcon }) {
+import { useStateValue } from "../States/StateProvider";
+// function Header({ theme, setTheme, themeIcon }) {
+function Header() {
+  const [state, dispatch] = useStateValue();
   return (
     <div className="header">
       <h1 className="header__logo">Todo</h1>
       <img
-        onClick={() => setTheme(!theme)}
-        src={themeIcon}
+        onClick={() => dispatch({type:'SET_THEME'})}
+        src={state.themeIcon}
         alt="dark-light theme"
       />
     </div>

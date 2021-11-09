@@ -110,6 +110,7 @@
 }
 
 .input__field:focus {
+  caret-color: #3a7bfd;
   color: var(--typing);
 }
 

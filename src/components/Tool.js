@@ -12,19 +12,19 @@ function Tool({ todos, setTodos, setOption, option }) {
       <div className="tool__filterWrapper">
         <div className="tool__filter">
           <p
-            className={option == "all" && "tool__filter--option"}
+            className={option == "all" ? "tool__filter--option" : ""}
             onClick={() => setOption("all")}
           >
             All
           </p>
           <p
-            className={option == "active" && "tool__filter--option"}
+            className={option == "active" ? "tool__filter--option" : ""}
             onClick={() => setOption("active")}
           >
             Active
           </p>
           <p
-            className={option == "completed" && "tool__filter--option"}
+            className={option == "completed" ? "tool__filter--option" : ""}
             onClick={() => setOption("completed")}
           >
             completed

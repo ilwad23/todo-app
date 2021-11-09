@@ -10,6 +10,7 @@ export const initialState = {
   theme: storagedTheme == "sun" ? true : false,
   themeIcon: storagedTheme == "sun" ? sun : moon,
   value: "",
+  option:'all',
 };
 
 const reducer = (state, action) => {

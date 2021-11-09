@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { useStateValue } from "../States/StateProvider";
-// function Header({ theme, setTheme, themeIcon }) {
 function Header() {
   const [state, dispatch] = useStateValue();
   return (

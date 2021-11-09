@@ -7,16 +7,15 @@ import Input from "./Input";
 import Header from "./Header";
 
 function App() {
-  const [value, setValue] = useState("");
   const [todos, setTodos] = useState([]);
   const [option, setOption] = useState("all");
   const [state, dispatch] = useStateValue();
   function handleSubmit(e) {
-    if (value) {
+    if (state.value) {
       if (e.key == "Enter") {
         e.preventDefault();
-        setTodos([...todos, { message: value, completed: false }]);
-        setValue("");
+        setTodos([...todos, { message: state.value, completed: false }]);
+        
       }
     }
   }
@@ -48,7 +47,7 @@ function App() {
       <div className="container__within">
         <Header />
 
-        <Input handleSubmit={handleSubmit} setValue={setValue} value={value} />
+        <Input handleSubmit={handleSubmit} />
 
         {todos.length > 0 && (
           <div className="listOfTodos">

@@ -1,6 +1,8 @@
 import React from "react";
+import { useStateValue } from "../States/StateProvider";
 
 function Tool({ todos, setTodos, setOption, option }) {
+  const [state, dispatch] = useStateValue();
   return (
     <div className="tool">
       <div className="tool__completedTodos">
@@ -12,20 +14,22 @@ function Tool({ todos, setTodos, setOption, option }) {
       <div className="tool__filterWrapper">
         <div className="tool__filter">
           <p
-            className={option == "all" ? "tool__filter--option" : ""}
-            onClick={() => setOption("all")}
+            className={state.option == "all" ? "tool__filter--option" : ""}
+            onClick={() => dispatch({ type: "SET-OPTION", option: "all" })}
           >
             All
           </p>
           <p
-            className={option == "active" ? "tool__filter--option" : ""}
-            onClick={() => setOption("active")}
+            className={state.option == "active" ? "tool__filter--option" : ""}
+            onClick={() => dispatch({ type: "SET-OPTION", option: "active" })}
           >
             Active
           </p>
           <p
-            className={option == "completed" ? "tool__filter--option" : ""}
-            onClick={() => setOption("completed")}
+            className={state.option == "completed" ? "tool__filter--option" : ""}
+            onClick={() =>
+              dispatch({ type: "SET-OPTION", option: "completed" })
+            }
           >
             completed
           </p>

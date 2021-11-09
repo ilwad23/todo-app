@@ -3,16 +3,19 @@ import IconCross from "../images/icon-cross.svg";
 function Todo({ setTodos, todo }) {
   const [completed, setCompleted] = useState(false);
 
-  function cancelTodo()  {
+  function cancelTodo() {
     setTodos((prevTodos) => {
-      let newTodos = prevTodos.filter((obj, i) => obj.message!==todo.message);
+      let newTodos = prevTodos.filter((obj, i) => {
+        console.log(obj);
+        return obj.id !== todo.id;
+      });
       return newTodos;
     });
   }
   function handleTodos() {
     setTodos((prevTodos) => {
       let newTodos = prevTodos.map((obj, i) => {
-        if (obj.message === todo.message) {
+        if (obj.id === todo.id) {
           obj.completed = !completed;
           return obj;
         }
@@ -40,7 +43,11 @@ function Todo({ setTodos, todo }) {
           {todo.message}
         </div>
       </div>
-      <img className="todo__cross" src={IconCross} onClick={() => cancelTodo()} />
+      <img
+        className="todo__cross"
+        src={IconCross}
+        onClick={() => cancelTodo()}
+      />
     </div>
   );
 }

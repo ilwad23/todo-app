@@ -10,20 +10,26 @@ export const initialState = {
   theme: storagedTheme == "sun" ? true : false,
   themeIcon: storagedTheme == "sun" ? sun : moon,
   value: "",
-  option:'all',
+  option: "all",
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "SET_VALUE":
+    case "SET-OPTION":
       return {
         ...state,
-        value: action.value
+        option: action.option,
+      };
+    case "SET-VALUE":
+      return {
+        ...state,
+        value: action.value,
       };
 
-    case "SET_THEME":
+    case "SET-THEME":
       let icon = !state.theme == false ? "moon" : "sun";
       localStorage.setItem("todo-theme", icon);
+
       return {
         ...state,
         themeIcon: !state.theme ? sun : moon,

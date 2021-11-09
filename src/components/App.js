@@ -14,18 +14,21 @@ function App() {
     if (state.value) {
       if (e.key == "Enter") {
         e.preventDefault();
-        setTodos([...todos, { message: state.value, completed: false }]);
+        setTodos([
+          ...todos,
+          { id: Math.random(), message: state.value, completed: false },
+        ]);
         
       }
     }
   }
 
   let filteredTodos = todos.filter((todo) => {
-    if (option == "completed") {
+    if (state.option == "completed") {
       if (todo.completed) {
         return todo;
       }
-    } else if (option == "active") {
+    } else if (state.option == "active") {
       if (!todo.completed) {
         return todo;
       }

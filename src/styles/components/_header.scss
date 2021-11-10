@@ -1,5 +1,5 @@
 .header {
-  width: $width;
+  width: var(--width);
   height: 75px;
   @include seperate-items-between();
   &__logo {

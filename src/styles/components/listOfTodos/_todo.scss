@@ -1,5 +1,5 @@
 .todo {
-  @include box($height);
+  @include box(var(--height));
   @include seperate-items-between();
   border-bottom: 1px solid var(--circle);
   cursor: pointer;

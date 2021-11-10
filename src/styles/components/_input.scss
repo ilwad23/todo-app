@@ -1,5 +1,5 @@
 .input {
-  @include box($height);
+  @include box(var(--height));
   @include seperate-items-start();
   box-shadow: $shadows;
   margin-bottom: 30px;

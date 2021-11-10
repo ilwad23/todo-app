@@ -3,8 +3,13 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 .container {
+  --height: 64px;
+  --width: 540px;
+  @include medium {
+    --height: 48px;
+    --width: 90vw;
+  }
   &__light {
     --bg: #fafafa;
     --bg-img-desktop: url(../images/bg-desktop-light.jpg);
@@ -12,7 +17,7 @@
     --box: #fafafa;
     --circle: #d2d3db;
     --tool: #9091a2;
-    --tool-hover:  #505058;
+    --tool-hover: #505058;
     --filter: #9091a2;
     --typing: #484b6a;
     --completed-message: #e4e5f1;
@@ -25,7 +30,7 @@
     --box: #24263d;
     --circle: #393a4c;
     --tool: #4d4f66;
-    --tool-hover:  #D2D3DB;
+    --tool-hover: #d2d3db;
     --filter: #777a92;
     --typing: #d8daee;
     --completed-message: #4d4f66;
@@ -36,9 +41,16 @@
   width: $width-page;
   height: $height-page;
   background: var(--bg-img-desktop) no-repeat;
+  @include small {
+    background-image: var(--bg-img-mobile) ;
+    object-fit: contain;
+  }
   background-color: var(--bg);
   &__within {
-  @include center-item();
-  padding-top: 178px;
+    @include center-item();
+    padding-top: 178px;
+    @include small {
+      padding-top: 40px;
+    }
   }
 }

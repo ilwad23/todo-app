@@ -1,17 +1,3 @@
-$blue: #3a7bfd;
-$gradint: linear-gradient(
-  139.05deg,
-  hsl(192, 100%, 67%) 0%,
-  hsl(280, 87%, 65%) 112.99%
-);
-$shadows: 0px 25px 26px 5px rgba(0, 0, 0, 0.1);
-
-// SIZES
-$width: 540px;
-$height: 64px;
-$width-page: 100vw;
-$height-page: 100vh;
-
 // GERNERAL MIXINS
 @mixin center-item {
   display: grid;
@@ -39,8 +25,8 @@ $height-page: 100vh;
   line-height: $size;
 }
 // SPECIFIC MIXINS
-@mixin box($height) {
-  width: $width;
+@mixin box($height: var(--height)) {
+  width: var(--width);
   height: $height;
   background-color: var(--box);
   border-radius: 4px;
@@ -69,3 +55,34 @@ $height-page: 100vh;
   content: url(../images/icon-check.svg);
   @include center-item();
 }
+
+//BREAKPOINTS
+@mixin big {
+  @media screen and (min-width: 551px) {
+    @content;
+  }
+}
+@mixin medium {
+  @media screen and (max-width: 550px) {
+    @content;
+  }
+}
+@mixin small {
+  @media screen and (max-width: 375px) {
+    @content;
+  }
+}
+// COLOR
+$blue: #3a7bfd;
+$gradint: linear-gradient(
+  139.05deg,
+  hsl(192, 100%, 67%) 0%,
+  hsl(280, 87%, 65%) 112.99%
+);
+
+// SHADOW
+$shadows: 0px 25px 26px 5px rgba(0, 0, 0, 0.1);
+
+// SIZES
+$width-page: 100vw;
+$height-page: 100vh;

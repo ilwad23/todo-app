@@ -1,5 +1,5 @@
 .tool {
-  @include box($height);
+  @include box(var(--height));
   @include seperate-items-between();
   @include font(300, var(--tool), 13px);
   position: relative;
@@ -22,32 +22,30 @@
   }
   &__filterWrapper {
     width: fit-content;
+    @include small {
+      position: absolute;
+      top: calc(var(--height) + 20px);
+      left: 0;
+      @include box();
+      @include center-item();
+    }
   }
   &__filter {
     & p {
       cursor: pointer;
       font-weight: 700;
       margin-right: 10px;
-    }
-    &--option {
-      color: $blue;
-    }
-    & p:hover {
-      color: var(--tool-hover);
-    }
-  }
-  @media screen and (max-width: 550px) {
-    &__filterWrapper {
-      position: absolute;
-      top: $height + 20px;
-      left: 0;
-      @include box($height);
-      @include center-item();
-    }
-    &__filter {
-      background-color: crimson;
-      & p {
-          margin-right: 15px;
+      @include medium {
+        margin-right: 5px;
+      }
+      @include small {
+        margin-right: 15px;
+      }
+      &--option {
+        color: $blue;
+      }
+      & p:hover {
+        color: var(--tool-hover);
       }
     }
   }

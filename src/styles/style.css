@@ -23,7 +23,7 @@
   }
 }
 
-.container__light {
+.container--light {
   --bg: #fafafa;
   --bg-img-desktop: url(../images/bg-desktop-light.jpg);
   --bg-img-mobile: url(../images/bg-mobile-light.jpg);
@@ -37,7 +37,7 @@
   --uncompleted-message: #484b6a;
 }
 
-.container__dark {
+.container--dark {
   --bg: #161722;
   --bg-img-desktop: url(../images/bg-desktop-dark.jpg);
   --bg-img-mobile: url(../images/bg-mobile-dark.jpg);

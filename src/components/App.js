@@ -44,7 +44,7 @@ function App() {
   return (
     <div
       className={`container ${
-        state.theme ? "container__dark" : "container__light"
+        state.theme ? "container--dark" : "container--light"
       }`}
     >
       <div className="container__within">

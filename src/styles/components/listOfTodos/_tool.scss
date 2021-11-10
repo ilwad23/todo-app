@@ -28,6 +28,7 @@
       left: 0;
       @include box();
       @include center-item();
+      box-shadow: $shadows;
     }
   }
   &__filter {

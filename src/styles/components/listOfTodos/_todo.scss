@@ -15,6 +15,9 @@
     }
     &--completed {
       background: $gradint;
+      &::after {
+        @include circle-after();
+      }
     }
   }
 

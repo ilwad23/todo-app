@@ -28,13 +28,16 @@ function Todo({ setTodos, todo }) {
   return (
     <div className="todo" onClick={() => handleTodos()}>
       <div className="todo__left">
+        <div className="todo__circleContiner">
+
         <div
           className={`todo__circle ${
             todo.completed
-              ? "todo__circle--completed"
-              : "todo__circle--uncompleted"
+            ? "todo__circle--completed"
+            : "todo__circle--uncompleted"
           }`}
-        ></div>
+          ></div>
+          </div>
         <div
           className={`todo__text ${
             todo.completed ? "todo__text--completed" : "todo__text--uncompleted"

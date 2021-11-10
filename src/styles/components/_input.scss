@@ -3,12 +3,16 @@
   @include seperate-items-start();
   box-shadow: $shadows;
   margin-bottom: 30px;
+  &__circleContiner {
+    @include circleContiner;
+  }
   &__circle {
     @include circle();
     border: $circle-border;
   }
   &__field {
     @include font(600, var(--filter), 17px);
+    width: calc(var(--width) - 120px);
     background-color: transparent;
     border: none;
     outline: none;

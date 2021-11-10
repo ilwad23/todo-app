@@ -8,19 +8,19 @@
   &__filter {
     @include seperate-items-between();
   }
-  &__completedTodos,
-  &__clear {
+  &__top {
     cursor: pointer;
+    &:first-child {
+      @include seperate-items-between();
+    }
     &--num {
       margin-right: 5px;
     }
+    &:hover {
+      color: var(--tool-hover);
+    }
   }
-
-  &__completedTodos:hover,
-  &__clear:hover {
-    color: var(--tool-hover);
-  }
-  &__filterWrapper {
+  &__bottom {
     width: fit-content;
     @include small {
       position: absolute;
@@ -42,12 +42,12 @@
       @include small {
         margin-right: 15px;
       }
-      &--option {
-        color: $blue;
-      }
-      & p:hover {
+      &:hover {
         color: var(--tool-hover);
       }
+    }
+    &--option {
+      color: $blue;
     }
   }
 }

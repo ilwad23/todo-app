@@ -4,7 +4,9 @@ function Input({ handleSubmit }) {
   const [state, dispatch] = useStateValue();
   return (
     <div className="input">
-      <div className="input__circle"></div>
+      <div className="input__circleContiner">
+        <div className="input__circle"></div>
+      </div>
       <input
         className="input__field"
         value={state.value}

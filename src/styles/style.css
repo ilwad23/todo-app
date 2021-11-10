@@ -91,12 +91,17 @@
   color: white;
   font-size: 43px;
   line-height: 43px;
+  word-break: break-all;
   letter-spacing: 0.29em;
 }
 
 .input {
   width: var(--width);
-  height: var(--height);
+  min-height: var(--height);
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 5px;
   background-color: var(--box);
   border-radius: 4px;
   display: -webkit-box;
@@ -113,12 +118,22 @@
   margin-bottom: 30px;
 }
 
+.input__circleContiner {
+  height: 100%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding-left: 20px;
+  padding-right: 22px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
 .input__circle {
   width: 28px;
   height: 26px;
-  margin-left: 22px;
   border-radius: 100%;
-  margin-right: 20px;
   border: 2px solid var(--circle);
 }
 
@@ -127,6 +142,8 @@
   color: var(--filter);
   font-size: 17px;
   line-height: 17px;
+  word-break: break-all;
+  width: calc(var(--width) - 120px);
   background-color: transparent;
   border: none;
   outline: none;
@@ -155,7 +172,11 @@
 
 .listOfTodos {
   width: var(--width);
-  height: fix-content;
+  min-height: fix-content;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 5px;
   background-color: var(--box);
   border-radius: 4px;
   -webkit-box-shadow: 0px 25px 26px 5px rgba(0, 0, 0, 0.1);
@@ -165,7 +186,11 @@
 
 .todo {
   width: var(--width);
-  height: var(--height);
+  min-height: var(--height);
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 5px;
   background-color: var(--box);
   border-radius: 4px;
   display: -webkit-box;
@@ -193,13 +218,23 @@
           justify-content: flex-start;
 }
 
+.todo__circleContiner {
+  height: 100%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding-left: 20px;
+  padding-right: 22px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
 .todo__circle {
   position: relative;
   width: 28px;
   height: 26px;
-  margin-left: 22px;
   border-radius: 100%;
-  margin-right: 20px;
 }
 
 .todo__circle--uncompleted {
@@ -225,6 +260,8 @@
   color: var(--uncompleted-message);
   font-size: 17px;
   line-height: 17px;
+  word-break: break-all;
+  margin-right: 50px;
 }
 
 .todo__text--completed {
@@ -234,7 +271,12 @@
 
 .todo__cross {
   margin-right: 20px;
-  display: none;
+}
+
+@media screen and (min-width: 551px) {
+  .todo__cross {
+    display: none;
+  }
 }
 
 .todo:hover .todo__cross {
@@ -259,7 +301,11 @@
 
 .tool {
   width: var(--width);
-  height: var(--height);
+  min-height: var(--height);
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 5px;
   background-color: var(--box);
   border-radius: 4px;
   display: -webkit-box;
@@ -275,6 +321,7 @@
   color: var(--tool);
   font-size: 13px;
   line-height: 13px;
+  word-break: break-all;
   position: relative;
   padding: 20px;
 }
@@ -291,31 +338,47 @@
           justify-content: space-between;
 }
 
-.tool__completedTodos, .tool__clear {
+.tool__top {
   cursor: pointer;
 }
 
-.tool__completedTodos--num, .tool__clear--num {
+.tool__top:first-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.tool__top--num {
   margin-right: 5px;
 }
 
-.tool__completedTodos:hover, .tool__clear:hover {
+.tool__top:hover {
   color: var(--tool-hover);
 }
 
-.tool__filterWrapper {
+.tool__bottom {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
 
 @media screen and (max-width: 375px) {
-  .tool__filterWrapper {
+  .tool__bottom {
     position: absolute;
     top: calc(var(--height) + 20px);
     left: 0;
     width: var(--width);
-    height: var(--height);
+    min-height: var(--height);
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+    padding: 5px;
     background-color: var(--box);
     border-radius: 4px;
     display: -ms-grid;
@@ -344,11 +407,11 @@
   }
 }
 
-.tool__filter p--option {
-  color: #3a7bfd;
+.tool__filter p:hover {
+  color: var(--tool-hover);
 }
 
-.tool__filter p p:hover {
-  color: var(--tool-hover);
+.tool__filter--option {
+  color: #3a7bfd;
 }
 /*# sourceMappingURL=style.css.map */

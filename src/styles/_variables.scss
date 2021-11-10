@@ -23,20 +23,28 @@
   color: $color;
   font-size: $size;
   line-height: $size;
+  word-break: break-all;
 }
 // SPECIFIC MIXINS
 @mixin box($height: var(--height)) {
   width: var(--width);
-  height: $height;
+  min-height: $height;
+  height: max-content;
+  padding: 5px;
   background-color: var(--box);
   border-radius: 4px;
+}
+@mixin circleContiner {
+  height: 100%;
+  width: fit-content;
+  padding-left: 20px;
+  padding-right: 22px;
+  @include center-item;
 }
 @mixin circle() {
   width: 28px;
   height: 26px;
-  margin-left: 22px;
   border-radius: 100%;
-  margin-right: 20px;
 }
 @mixin circle-before() {
   position: absolute;

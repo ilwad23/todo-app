@@ -1,5 +1,6 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { useStateValue } from "../States/StateProvider";
+import { filteredTodos } from "../States/reducer";
 import Todo from "./Todo";
 import Tool from "./Tool";
 import Input from "./Input";
@@ -7,23 +8,8 @@ import Header from "./Header";
 import "../styles/style.css";
 
 function App() {
-  const [state, dispatch] = useStateValue();
-
-  let filteredTodos = state.todos.filter((todo) => {
-    if (state.option == "completed") {
-      if (todo.completed) {
-        return todo;
-      }
-    } else if (state.option == "active") {
-      if (!todo.completed) {
-        return todo;
-      }
-    } else {
-      return todo;
-    }
-  });
-
-  let Todos = filteredTodos.map((todo, i) => (
+  const state = useStateValue()[0];
+  const Todos = filteredTodos(state).map((todo, i) => (
     <Todo key={i} todo={todo} setTodos={state.setTodos} />
   ));
 

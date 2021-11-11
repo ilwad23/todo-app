@@ -17,7 +17,20 @@ export const initialState = {
   value: "",
   todos: storagedTodos,
 };
-
+export const filteredTodos = (state) =>
+  state.todos.filter((todo) =>  {
+    if (state.option === "completed") {
+      if (todo.completed) {
+        return todo;
+      }
+    } else if (state.option === "active") {
+      if (!todo.completed) {
+        return todo;
+      }
+    } else {
+      return todo;
+    }
+  });
 const reducer = (state, action) => {
   switch (action.type) {
     case "UPDATE-TODOS":
@@ -50,6 +63,7 @@ const reducer = (state, action) => {
       };
     case "ADD-TODO":
       let newTodoAdded = [...state.todos];
+      let resetValue = state.value
       if (state.value) {
         if (action.event.key === "Enter") {
           action.event.preventDefault();
@@ -58,12 +72,13 @@ const reducer = (state, action) => {
             message: state.value,
             completed: false,
           });
+          resetValue = ''
         }
       }
       return {
         ...state,
-        value: "",
         todos: newTodoAdded,
+        value: resetValue,
       };
     case "SET-VALUE":
       return {

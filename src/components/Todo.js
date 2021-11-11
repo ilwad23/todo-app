@@ -1,43 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import IconCross from "../images/icon-cross.svg";
-function Todo({ setTodos, todo }) {
-  const [completed, setCompleted] = useState(false);
+import { useStateValue } from "../States/StateProvider";
 
-  function cancelTodo() {
-    setTodos((prevTodos) => {
-      let newTodos = prevTodos.filter((obj, i) => {
-        console.log(obj);
-        return obj.id !== todo.id;
-      });
-      return newTodos;
-    });
-  }
-  function handleTodos() {
-    setTodos((prevTodos) => {
-      let newTodos = prevTodos.map((obj, i) => {
-        if (obj.id === todo.id) {
-          obj.completed = !completed;
-          return obj;
-        }
-        return obj;
-      });
-      return newTodos;
-    });
-    setCompleted(!completed);
-  }
+function Todo({ todo }) {
+  const setState = useStateValue();
+  
   return (
-    <div className="todo" onClick={() => handleTodos()}>
+    <div
+      className="todo"
+      onClick={() =>
+        setState.dispatch({
+          type: "TODO-COMPLETED",
+          id: todo.id,
+        })
+      }
+    >
       <div className="todo__left">
         <div className="todo__circleContiner">
-
-        <div
-          className={`todo__circle ${
-            todo.completed
-            ? "todo__circle--completed"
-            : "todo__circle--uncompleted"
-          }`}
+          <div
+            className={`todo__circle ${
+              todo.completed
+                ? "todo__circle--completed"
+                : "todo__circle--uncompleted"
+            }`}
           ></div>
-          </div>
+        </div>
         <div
           className={`todo__text ${
             todo.completed ? "todo__text--completed" : "todo__text--uncompleted"
@@ -49,7 +36,8 @@ function Todo({ setTodos, todo }) {
       <img
         className="todo__cross"
         src={IconCross}
-        onClick={() => cancelTodo()}
+        alt='cancel'
+        onClick={() => setState.dispatch({ type: "CANCEL-TODO", id: todo.id })}
       />
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import { useStateValue } from "../States/StateProvider";
 
-function Tool({ todos, setTodos, setOption, option }) {
+function Tool({ todos, setTodos }) {
   const [state, dispatch] = useStateValue();
   return (
     <div className="tool">

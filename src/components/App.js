@@ -7,23 +7,23 @@ import Input from "./Input";
 import Header from "./Header";
 
 function App() {
-  const [todos, setTodos] = useState([]);
-  const [option, setOption] = useState("all");
+  // const [todos, setTodos] = useState([]);
   const [state, dispatch] = useStateValue();
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     if (state.value) {
       if (e.key == "Enter") {
         e.preventDefault();
-        setTodos([
-          ...todos,
-          { id: Math.random(), message: state.value, completed: false },
-        ]);
-        
+        // setTodos([
+        //   ...todos,
+        //   { id: Math.random(), message: state.value, completed: false },
+        // ]);
+
+        dispatch({ type: "ADD-TODO" });
       }
     }
-  }
-
-  let filteredTodos = todos.filter((todo) => {
+  };
+console.log(state.todos);
+  let filteredTodos = state.todos.filter((todo) => {
     if (state.option == "completed") {
       if (todo.completed) {
         return todo;
@@ -38,7 +38,8 @@ function App() {
   });
 
   let Todos = filteredTodos.map((todo, i) => (
-    <Todo key={i} todo={todo} setTodos={setTodos} />
+    <Todo key={i} todo={todo} setTodos=
+    {state.setTodos} />
   ));
 
   return (
@@ -52,15 +53,10 @@ function App() {
 
         <Input handleSubmit={handleSubmit} />
 
-        {todos.length > 0 && (
+        {state.todos.length > 0 && (
           <div className="listOfTodos">
             {Todos}
-            <Tool
-              todos={todos}
-              setTodos={setTodos}
-              setOption={setOption}
-              option={option}
-            />
+            <Tool todos={state.todos} setTodos={state.setTodos} />
           </div>
         )}
       </div>

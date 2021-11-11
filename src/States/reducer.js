@@ -37,7 +37,7 @@ const reducer = (state, action) => {
       };
 
     case "TODO-COMPLETED":
-      let newTodos = state.todos.map((obj, i) => {
+      let aTodoCompleted = state.todos.map((obj, i) => {
         if (obj.id === action.id) {
           obj.completed = !state.completed;
           return obj;
@@ -46,7 +46,7 @@ const reducer = (state, action) => {
       });
       return {
         ...state,
-        todos: newTodos,
+        todos: aTodoCompleted,
       };
     case "ADD-TODO":
       let newTodoAdded = [...state.todos];
@@ -62,8 +62,8 @@ const reducer = (state, action) => {
       }
       return {
         ...state,
-        todos: newTodoAdded,
         value: "",
+        todos: newTodoAdded,
       };
     case "SET-VALUE":
       return {

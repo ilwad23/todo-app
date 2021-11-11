@@ -1,6 +1,6 @@
 import React from "react";
 import { useStateValue } from "../States/StateProvider";
-import { filteredTodos } from "../States/reducer";
+import { filterTodos } from "../States/reducer";
 import Todo from "./Todo";
 import Tool from "./Tool";
 import Input from "./Input";
@@ -9,7 +9,7 @@ import "../styles/style.css";
 
 function App() {
   const state = useStateValue()[0];
-  const Todos = filteredTodos(state).map((todo, i) => (
+  const Todos = filterTodos(state).map((todo, i) => (
     <Todo key={i} todo={todo} setTodos={state.setTodos} />
   ));
 

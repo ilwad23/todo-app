@@ -6,10 +6,6 @@ let storagedTodos = JSON.parse(localStorage.getItem("todos"));
 if (!storagedTheme) {
   localStorage.setItem("todo-theme", "sun");
 }
-if (!storagedTodos) {
-  localStorage.setItem("todos", JSON.stringify([]));
-}
-
 export const initialState = {
   theme: storagedTheme === "sun" ? true : false,
   themeIcon: storagedTheme === "sun" ? sun : moon,
@@ -17,8 +13,8 @@ export const initialState = {
   value: "",
   todos: storagedTodos,
 };
-export const filteredTodos = (state) =>
-  state.todos.filter((todo) =>  {
+export const filterTodos = (state) =>
+  state.todos.filter((todo) => {
     if (state.option === "completed") {
       if (todo.completed) {
         return todo;
@@ -31,6 +27,7 @@ export const filteredTodos = (state) =>
       return todo;
     }
   });
+
 const reducer = (state, action) => {
   switch (action.type) {
     case "UPDATE-TODOS":
@@ -41,12 +38,13 @@ const reducer = (state, action) => {
         todos: state.todos.filter((obj) => !obj.completed),
       };
     case "CANCEL-TODO":
-      let newTodosFilter = state.todos.filter((obj) => {
+      let aCancelTodo = state.todos.filter((obj) => {
         return obj.id !== action.id;
       });
+      localStorage.setItem("todos", JSON.stringify(aCancelTodo));
       return {
         ...state,
-        todos: newTodosFilter,
+        todos: aCancelTodo,
       };
 
     case "TODO-COMPLETED":
@@ -57,13 +55,14 @@ const reducer = (state, action) => {
         }
         return obj;
       });
+      localStorage.setItem("todos", JSON.stringify(aTodoCompleted));
       return {
         ...state,
         todos: aTodoCompleted,
       };
     case "ADD-TODO":
       let newTodoAdded = [...state.todos];
-      let resetValue = state.value
+      let resetValue = state.value;
       if (state.value) {
         if (action.event.key === "Enter") {
           action.event.preventDefault();
@@ -72,9 +71,10 @@ const reducer = (state, action) => {
             message: state.value,
             completed: false,
           });
-          resetValue = ''
+          resetValue = "";
         }
       }
+      localStorage.setItem("todos", JSON.stringify(newTodoAdded));
       return {
         ...state,
         todos: newTodoAdded,

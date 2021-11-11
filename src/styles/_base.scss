@@ -48,7 +48,7 @@
   background-color: var(--bg);
   &__within {
     @include center-item();
-    padding-top: 178px;
+    padding-top: 62px;
     @include small {
       padding-top: 40px;
     }

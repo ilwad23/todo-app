@@ -18,12 +18,15 @@
   align-items: center;
   justify-content: flex-start;
 }
-@mixin font($weight, $color, $size) {
+@mixin font($weight, $color, $size:17px) {
   font-weight: $weight;
   color: $color;
   font-size: $size;
   line-height: $size;
   word-break: break-all;
+  @include small {
+    font-size: 12px;
+  }
 }
 // SPECIFIC MIXINS
 @mixin box($height: var(--height)) {
@@ -31,6 +34,7 @@
   min-height: $height;
   height: max-content;
   padding: 5px;
+  padding-left: 0;
   background-color: var(--box);
   border-radius: 4px;
 }

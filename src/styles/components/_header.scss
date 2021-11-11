@@ -5,5 +5,8 @@
   &__logo {
     @include font(bold, white, 43px);
     letter-spacing: 0.29em;
+    @include small {
+      font-size: 28px;
+    }
   }
 }

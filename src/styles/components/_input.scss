@@ -11,7 +11,7 @@
     border: $circle-border;
   }
   &__field {
-    @include font(600, var(--filter), 17px);
+    @include font(600, var(--filter));
     width: calc(var(--width) - 120px);
     background-color: transparent;
     border: none;

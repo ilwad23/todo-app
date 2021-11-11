@@ -11,17 +11,17 @@ export const initialState = {
   themeIcon: storagedTheme === "sun" ? sun : moon,
   option: "all",
   value: "",
-  todos: storagedTodos,
+  todos: storagedTodos || [],
 };
 export const filterTodos = (state) =>
-  state.todos.filter((todo) => {
-    if (state.option === "completed") {
-      if (todo.completed) {
-        return todo;
-      }
-    } else if (state.option === "active") {
-      if (!todo.completed) {
-        return todo;
+state.todos.filter((todo) => {
+  if (state.option === "completed") {
+    if (todo.completed) {
+      return todo;
+    }
+  } else if (state.option === "active") {
+    if (!todo.completed) {
+      return todo;
       }
     } else {
       return todo;
@@ -30,32 +30,32 @@ export const filterTodos = (state) =>
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "UPDATE-TODOS":
-      localStorage.setItem("todos", JSON.stringify(state.todos));
-    case "CLEAR-COMPLETED-TODOS":
-      return {
-        ...state,
-        todos: state.todos.filter((obj) => !obj.completed),
-      };
-    case "CANCEL-TODO":
-      let aCancelTodo = state.todos.filter((obj) => {
-        return obj.id !== action.id;
-      });
-      localStorage.setItem("todos", JSON.stringify(aCancelTodo));
-      return {
-        ...state,
-        todos: aCancelTodo,
-      };
-
-    case "TODO-COMPLETED":
-      let aTodoCompleted = state.todos.map((obj, i) => {
-        if (obj.id === action.id) {
-          obj.completed = !state.completed;
-          return obj;
-        }
-        return obj;
-      });
-      localStorage.setItem("todos", JSON.stringify(aTodoCompleted));
+      case "CLEAR-COMPLETED-TODOS":
+      const activeTodos = state.todos.filter((obj) => !obj.completed) 
+      localStorage.setItem("todos", JSON.stringify(activeTodos));
+        return {
+          ...state,
+          todos: activeTodos,
+        };
+        case "CANCEL-TODO":
+          let aCancelTodo = state.todos.filter((obj) => {
+            return obj.id !== action.id;
+          });
+          localStorage.setItem("todos", JSON.stringify(aCancelTodo));
+          return {
+            ...state,
+            todos: aCancelTodo,
+          };
+          
+          case "TODO-COMPLETED":
+            let aTodoCompleted = state.todos.map((obj, i) => {
+              if (obj.id === action.id) {
+                obj.completed = !state.completed;
+                return obj;
+              }
+              return obj;
+            });
+            localStorage.setItem("todos", JSON.stringify(aTodoCompleted));
       return {
         ...state,
         todos: aTodoCompleted,

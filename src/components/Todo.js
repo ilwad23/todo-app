@@ -3,7 +3,7 @@ import IconCross from "../images/icon-cross.svg";
 import { useStateValue } from "../States/StateProvider";
 
 function Todo({ todo }) {
-    const dispatch = useStateValue()[0];
+    const dispatch = useStateValue()[1];
 
     return (
     <div

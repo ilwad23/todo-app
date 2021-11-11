@@ -3,13 +3,13 @@ import IconCross from "../images/icon-cross.svg";
 import { useStateValue } from "../States/StateProvider";
 
 function Todo({ todo }) {
-  const setState = useStateValue();
-  
-  return (
+    const dispatch = useStateValue();
+
+    return (
     <div
       className="todo"
       onClick={() =>
-        setState.dispatch({
+        dispatch[1]({
           type: "TODO-COMPLETED",
           id: todo.id,
         })
@@ -37,7 +37,7 @@ function Todo({ todo }) {
         className="todo__cross"
         src={IconCross}
         alt='cancel'
-        onClick={() => setState.dispatch({ type: "CANCEL-TODO", id: todo.id })}
+        onClick={() => dispatch[1]({ type: "CANCEL-TODO", id: todo.id })}
       />
     </div>
   );

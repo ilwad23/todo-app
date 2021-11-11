@@ -16,6 +16,11 @@ export const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "CLEAR-COMPLETED-TODOS":
+      return {
+        ...state,
+        todos: state.todos.filter((obj) => !obj.completed),
+      };
     case "CANCEL-TODO":
       let newTodosFilter = state.todos.filter((obj) => {
         return obj.id !== action.id;

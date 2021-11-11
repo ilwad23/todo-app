@@ -1,9 +1,13 @@
 import sun from "../images/icon-sun.svg";
 import moon from "../images/icon-moon.svg";
 let storagedTheme = localStorage.getItem("todo-theme");
+let storagedTodos = JSON.parse(localStorage.getItem("todos"));
 
 if (!storagedTheme) {
   localStorage.setItem("todo-theme", "sun");
+}
+if (!storagedTodos) {
+  localStorage.setItem("todos", JSON.stringify([]));
 }
 
 export const initialState = {
@@ -11,11 +15,13 @@ export const initialState = {
   themeIcon: storagedTheme === "sun" ? sun : moon,
   option: "all",
   value: "",
-  todos: [],
+  todos: storagedTodos,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "UPDATE-TODOS":
+      localStorage.setItem("todos", JSON.stringify(state.todos));
     case "CLEAR-COMPLETED-TODOS":
       return {
         ...state,
@@ -43,12 +49,20 @@ const reducer = (state, action) => {
         todos: newTodos,
       };
     case "ADD-TODO":
+      let newTodoAdded = [...state.todos];
+      if (state.value) {
+        if (action.event.key === "Enter") {
+          action.event.preventDefault();
+          newTodoAdded.push({
+            id: Math.random(),
+            message: state.value,
+            completed: false,
+          });
+        }
+      }
       return {
         ...state,
-        todos: [
-          ...state.todos,
-          { id: Math.random(), message: state.value, completed: false },
-        ],
+        todos: newTodoAdded,
         value: "",
       };
     case "SET-VALUE":

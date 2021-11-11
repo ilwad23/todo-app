@@ -1,6 +1,6 @@
 import React from "react";
 import { useStateValue } from "../States/StateProvider";
-function Input({ handleSubmit }) {
+function Input() {
   const [state, dispatch] = useStateValue();
   return (
     <div className="input">
@@ -13,7 +13,7 @@ function Input({ handleSubmit }) {
         onChange={(e) => dispatch({ type: "SET-VALUE", value: e.target.value })}
         type="text"
         placeholder="Create a new todo..."
-        onKeyPress={(e) => handleSubmit(e)}
+        onKeyPress={(e) => dispatch({ type: "ADD-TODO", event: e })}
       />
     </div>
   );
